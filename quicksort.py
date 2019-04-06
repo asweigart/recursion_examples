@@ -1,19 +1,19 @@
-def quicksort(theList, left=None, right=None):
-    # By default, `left` and `right` span the entire range of `theList`.
+def quicksort(items, left=None, right=None):
+    # By default, `left` and `right` span the entire range of `items`.
     if left is None:
         left = 0
     if right is None:
-        right = len(theList) - 1
+        right = len(items) - 1
 
     # UNCOMMENT FOR DEBUG OUTPUT:
-    #print('quicksort() called, sorting this range:', theList[left:right + 1])
+    #print('quicksort() called, sorting this range:', items[left:right + 1])
 
     if right <= left:
         return # BASE CASE
 
     i = left # i starts at the beginning of the range.
     pivotIndex = right # The pivot is the value at the end of the range.
-    pivotValue = theList[pivotIndex]
+    pivotValue = items[pivotIndex]
 
     # UNCOMMENT FOR DEBUG OUTPUT:
     #print('                          The pivot is:', pivotValue)
@@ -21,22 +21,22 @@ def quicksort(theList, left=None, right=None):
     # Iterate up to, but not including, the pivot:
     for j in range(left, right):
         # If a value is less than the pivot, swap it so that it's on the
-        # left side of `theList`:
-        if theList[j] <= pivotValue:
+        # left side of `items`:
+        if items[j] <= pivotValue:
             # Swap these two values:
-            theList[i], theList[j] = theList[j], theList[i]
+            items[i], items[j] = items[j], items[i]
             i += 1
 
-    # Put the pivot on the left side of `theList`:
-    theList[i], theList[pivotIndex] = theList[pivotIndex], theList[i]
+    # Put the pivot on the left side of `items`:
+    items[i], items[pivotIndex] = items[pivotIndex], items[i]
     pivotIndex = i
 
     # UNCOMMENT FOR DEBUG OUTPUT:
-    #print('           After sorting, the range is:', theList[left:right + 1])
+    #print('           After sorting, the range is:', items[left:right + 1])
 
-    # Call quicksort() on the left and right sides of `theList`:
-    quicksort(theList, left, pivotIndex - 1)  # RECURSIVE CASE
-    quicksort(theList, pivotIndex + 1, right) # RECURSIVE CASE
+    # Call quicksort() on the left and right sides of `items`:
+    quicksort(items, left, pivotIndex - 1)  # RECURSIVE CASE
+    quicksort(items, pivotIndex + 1, right) # RECURSIVE CASE
 
 myList = [0, 7, 9, 6, 3, 1, 8, 2, 5, 4]
 quicksort(myList)
