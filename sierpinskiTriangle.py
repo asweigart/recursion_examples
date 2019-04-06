@@ -2,8 +2,9 @@ import turtle
 turtle.tracer(1000, 0) # Increase the first argument to speed up the drawing.
 turtle.setworldcoordinates(0, 0, 700, 700)
 turtle.hideturtle()
+turtle.pensize(10)
 
-MIN_SIZE = 4 # Try changing this to decrease/increase the amount of recursion.
+MIN_SIZE = 40 # Try changing this to decrease/increase the amount of recursion.
 
 def midpoint(startx, starty, endx, endy):
     # Return the x, y coordinate in the middle of the four given parameters.
