@@ -1,22 +1,29 @@
 import math
 
-def mergeSort(elements):
-    if len(elements) == 0 or len(elements) == 1:
+def mergeSort(items):
+    # UNCOMMENT FOR DEBUG OUTPUT:
+    print(' mergeSort() called on:', items)
+
+    if len(items) == 0 or len(items) == 1:
         # BASE CASE
-        # With only zero or one items, `elements` is already sorted.
-        return elements
+        # With only zero or one items, `items` is already sorted.
+        return items
 
     # RECURSIVE CASE
-    middle = math.floor(len(elements) / 2)
-    left = mergeSort(elements[:middle])
-    right = mergeSort(elements[middle:])
+    middle = math.floor(len(items) / 2)
+
+    # UNCOMMENT FOR DEBUG OUTPUT:
+    print('            Split into:', items[:middle], 'and', items[middle:])
+
+    left = mergeSort(items[:middle])
+    right = mergeSort(items[middle:])
 
     # At this point, `left` should be sorted and `right` should be
     # sorted. We can merge them into a single sorted list.
     sortedResult = []
     leftPointer = 0
     rightPointer = 0
-    while (len(sortedResult) < len(elements)):
+    while (len(sortedResult) < len(items)):
         if left[leftPointer] < right[rightPointer]:
             sortedResult.append(left[leftPointer])
             leftPointer += 1
@@ -33,7 +40,11 @@ def mergeSort(elements):
             sortedResult.extend(left[leftPointer:])
             break
 
-    return sortedResult # Returns a sorted version of `elements`.
+    # UNCOMMENT FOR DEBUG OUTPUT:
+    print('Two halves sorted into:', sortedResult)
 
+    return sortedResult # Returns a sorted version of `items`.
 
-print(mergeSort([3,4,5,1,2,8,3,7,6]))
+myList = [0, 7, 9, 6, 3, 1, 8, 2, 5, 4]
+myList = mergeSort(myList)
+print(myList)
