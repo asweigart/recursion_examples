@@ -3,12 +3,13 @@ def quicksort(items, left=None, right=None):
     if left is None:
         left = 0
     if right is None:
-        right = len(items) - 1
+        right = len(items) - 1 # `right` defaults to the last index in items.
 
     # UNCOMMENT FOR DEBUG OUTPUT:
     #print('quicksort() called, sorting this range:', items[left:right + 1])
 
     if right <= left:
+        # With only zero or one items, `items` is already sorted.
         return # BASE CASE
 
     i = left # i starts at the beginning of the range.
