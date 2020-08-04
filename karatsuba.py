@@ -21,7 +21,7 @@ def karatsuba(x, y):
     x = str(x)
     y = str(y)
 
-    # At single-digits, "multiply" the numbers with repeated addition:
+    # At single-digits, look up the products in the multiplication table:
     if len(x) == 1 and len(y) == 1:
         # BASE CASE
         return MULTIPLICATION_TABLE[(int(x), int(y))]
@@ -38,8 +38,6 @@ def karatsuba(x, y):
     # At this point, x and y have the same length.
 
     halfOfDigits = math.floor(len(x) / 2)
-    #if (len(x) % 2) != 0:
-    #    halfOfDigits += 1 # Round up to the next even number.
 
     # Split x into halves a & b, split y into halves c & d:
     a = int(x[:halfOfDigits])

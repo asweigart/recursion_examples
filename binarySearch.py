@@ -1,15 +1,18 @@
-def binary_search_recursive(arr, elem, start=0, end=None):
+def binarySearch(items, target, start=None, end=None):
+    if start is None:
+        start = 0 # `start` defaults to the 0 index.
     if end is None:
-        end = len(arr) - 1
-    if start > end:
-        return False
+        end = len(items) - 1 # `end` defaults to the last index.
+
+    if start > end: # BASE CASE
+        return None # The `target` is not in `items`.
 
     mid = (start + end) // 2
-    if elem == arr[mid]:
-        return mid
-    if elem < arr[mid]:
-        return binary_search_recursive(arr, elem, start, mid-1)
-    # elem > arr[mid]
-    return binary_search_recursive(arr, elem, mid+1, end)
+    if target == items[mid]: # BASE CASE
+        return mid # `target` has been found in `items`
+    elif target < items[mid]: # RECURSIVE CASE
+        return binarySearch(items, target, start, mid - 1)
+    elif target > items[mid]: # RECURSIVE CASE
+        return binarySearch(items, target, mid + 1, end)
 
-print(binary_search_recursive([2,4,6,8,10], 4))
+print(binarySearch([1, 4, 8, 11, 13, 16, 19, 19], 11))
