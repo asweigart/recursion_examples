@@ -35,11 +35,11 @@ seed = 0
 while True:
     # Get psuedorandom numbers for the branch properties.
     random.seed(seed)
-    LEFT_ANGLE     = random.randint(10,  30)
-    LEFT_DECREASE  = random.randint( 8,  15)
-    RIGHT_ANGLE    = random.randint(10,  30)
-    RIGHT_DECREASE = random.randint( 8,  15)
-    START_LENGTH   = random.randint(80, 120)
+    LEFT_ANGLE     = 30#random.randint(10,  30)
+    LEFT_DECREASE  = 36#random.randint( 8,  15)
+    RIGHT_ANGLE    = 30#random.randint(10,  30)
+    RIGHT_DECREASE = 36#random.randint( 8,  15)
+    START_LENGTH   = 180#random.randint(80, 120)
 
     # Write out the seed number.
     turtle.clear()

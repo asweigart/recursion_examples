@@ -1,14 +1,14 @@
 callStack = [] # The explicit call stack, which holds "frame objects".
-callStack.append({'instrPtr': 'start', 'number': 5}) # "Call" the "factorial() function"
+callStack.append({'returnAddr': 'start', 'number': 5}) # "Call" the "factorial() function"
 returnValue = None
 
 while len(callStack) > 0:
     # The body of the "factorial() function":
 
     number = callStack[-1]['number'] # Set number parameter.
-    instrPtr = callStack[-1]['instrPtr']
+    returnAddr = callStack[-1]['returnAddr']
 
-    if instrPtr == 'start':
+    if returnAddr == 'start':
         if number == 1:
             # BASE CASE
             returnValue = 1
@@ -16,11 +16,11 @@ while len(callStack) > 0:
             continue
         else:
             # RECURSIVE CASE
-            callStack[-1]['instrPtr'] = 'after recursive call'
+            callStack[-1]['returnAddr'] = 'after recursive call'
             # "Call" the "factorial() function":
-            callStack.append({'instrPtr': 'start', 'number': number - 1})
+            callStack.append({'returnAddr': 'start', 'number': number - 1})
             continue
-    elif instrPtr == 'after recursive call':
+    elif returnAddr == 'after recursive call':
         returnValue = number * returnValue
         callStack.pop()  # "Return from function call".
         continue
